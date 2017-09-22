@@ -44,8 +44,8 @@ const appRoutes: Routes = [
   imports: [
 		BrowserModule,
 		FormsModule,
+		ReactiveFormsModule,
 		RouterModule.forRoot(appRoutes),
-		ReactiveFormsModule
   ],
   providers: [ShoppingListService],
   bootstrap: [AppComponent]
