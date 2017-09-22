@@ -29,10 +29,10 @@ const appRoutes: Routes = [
 		{path: ':id', component: RecipeDetailComponent},
 		{path: ':id/edit', component: RecipeEditComponent},
 	]},
-	{path: 'shopping-list', component: ShoppingListComponent}
+	{path: 'shopping-list', component: ShoppingListComponent},
+	{path: 'signup', component: SignupComponent},
+	{path: 'signin', component: SigninComponent}
 ]
-
-const server = 'https://ngularprac.firebaseio.com/';
 
 @NgModule({
   declarations: [
