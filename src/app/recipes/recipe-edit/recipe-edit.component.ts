@@ -60,6 +60,10 @@ export class RecipeEditComponent implements OnInit {
 			})
 		)
 	}
+
+	onDeleteIngrediant(index: number) {
+		(<FormArray>this.recipeForm.get('ingrediants')).removeAt(index)
+	}
 	
 	private initForm() {
 		let recipeName = '';
