@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
+import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -16,6 +17,9 @@ import { ShoppingListService } from './shopping-list/shopping-list.service';
 import { RecipeService } from './recipes/recipe/recipe.service';
 import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
+import { ServerService } from './server/server.service';
+import { SignupComponent } from './auth/signup/signup.component';
+import { SigninComponent } from './auth/signin/signin.component';
 
 const appRoutes: Routes = [
 	{path: '', redirectTo: '/recipes', pathMatch: 'full'},
@@ -27,6 +31,8 @@ const appRoutes: Routes = [
 	]},
 	{path: 'shopping-list', component: ShoppingListComponent}
 ]
+
+const server = 'https://ngularprac.firebaseio.com/';
 
 @NgModule({
   declarations: [
@@ -40,15 +46,18 @@ const appRoutes: Routes = [
     ShoppingEditComponent,
 		DropdownDirective,
 		RecipeStartComponent,
-		RecipeEditComponent
+		RecipeEditComponent,
+		SignupComponent,
+		SigninComponent
   ],
   imports: [
 		BrowserModule,
 		FormsModule,
 		ReactiveFormsModule,
 		RouterModule.forRoot(appRoutes),
+		HttpModule
   ],
-  providers: [ShoppingListService, RecipeService],
+  providers: [ShoppingListService, RecipeService, ServerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
