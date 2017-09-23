@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { ServerService } from '../server/server.service';
+import { ServerService } from '../../server/server.service';
 
-import { AuthService } from '../auth/auth.service';
+import { AuthService } from '../../auth/auth.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
