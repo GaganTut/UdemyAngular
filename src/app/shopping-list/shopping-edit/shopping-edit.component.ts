@@ -1,9 +1,12 @@
+import { Store } from '@ngrx/store';
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import {NgForm } from '@angular/forms';
 import {Subscription} from 'rxjs/Subscription';
 
 import {Ingrediant} from '../../shared/ingrediant.model';
-import {ShoppingListService} from '../shopping-list.service';
+import * as ShoppingListActions from '../../store/actions/shopping-list.actions';
+import * as ShoppingListReducer from '../../store/reducers/shopping-list.reducer';
+import * as app from '../../store/app.reducers';
 
 @Component({
   selector: 'app-shopping-edit',
@@ -14,36 +17,41 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
 	@ViewChild('f') shoppingForm: NgForm;
 	subscription: Subscription;
 	editMode = false;
-	editedItemIndex: number;
 	editedItem: Ingrediant;
 
-  constructor(private shoppingService: ShoppingListService) { }
+  constructor(
+		private store: Store<app.AppState>
+	) { }
 
   ngOnInit() {
-		this.shoppingService.startedEditing
+		this.subscription = this.store.select('shop')
 			.subscribe(
-				(index: number) => {
-					this.editMode = true;
-					this.editedItemIndex = index;
-					this.editedItem = this.shoppingService.getIngrediant(index);
-					this.shoppingForm.setValue({
-						name: this.editedItem.name,
-						amount: this.editedItem.amount
-					})
+				data => {
+					if (data.editedIndex > -1) {
+						this.editedItem = data.editedIngrediant;
+						this.editMode = true;
+						this.shoppingForm.setValue({
+							name: this.editedItem.name,
+							amount: this.editedItem.amount
+						});
+					} else {
+						this.editMode = false;
+					}
 				}
-			)
+			);
 	}
 
 	ngOnDestroy() {
-		if(this.subscription) this.subscription.unsubscribe();
+		this.store.dispatch(new ShoppingListActions.StopEdit());
+		if (this.subscription) {this.subscription.unsubscribe(); }
 	}
-	
+
 	onAddItem(form: NgForm) {
 		const newIngrediant = new Ingrediant(form.value.name, form.value.amount);
 		if (this.editMode) {
-			this.shoppingService.updateIngrediant(this.editedItemIndex, newIngrediant);
+			this.store.dispatch(new ShoppingListActions.UpdateIngrediant(newIngrediant));
 		} else {
-			this.shoppingService.addIngrediant(newIngrediant);
+			this.store.dispatch(new ShoppingListActions.AddIngrediant(newIngrediant));
 		}
 		form.reset();
 		this.editMode = false;
@@ -55,7 +63,7 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
 	}
 
 	onDelete(index: number) {
-		this.shoppingService.deleteIngrediant(index);
+		this.store.dispatch(new ShoppingListActions.DeleteIngrediant());
 		this.onClear();
 	}
 }
