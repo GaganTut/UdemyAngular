@@ -7,8 +7,8 @@ import { Subscription} from 'rxjs/Subscription';
 
 import {Ingrediant} from '../shared/ingrediant.model';
 
-import * as ShoppingListActions from '../store/actions/shopping-list.actions';
-import * as ShoppingListReducer from '../store/reducers/shopping-list.reducer';
+import * as ShoppingListActions from '../store/shop/shopping-list.actions';
+import * as ShoppingListReducer from '../store/shop/shopping-list.reducer';
 import * as app from '../store/app.reducers';
 
 @Component({

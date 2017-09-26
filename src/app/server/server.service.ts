@@ -9,11 +9,11 @@ import { Recipe } from '../recipes/recipe.model';
 @Injectable()
 export class ServerService {
 	constructor(
-		private http: Http, 
+		private http: Http,
 		private recipeService: RecipeService,
 		private authService: AuthService
 	) { }
-	
+
 	storeData() {
 		return this.http.put('https://ngularprac.firebaseio.com/recipes.json', this.recipeService.getRecipes());
 	}
@@ -24,8 +24,8 @@ export class ServerService {
 			.map(
 				(res: Response) => {
 					const recipes: Recipe[] = res.json();
-					for (let recipe of recipes) {
-						if(!recipe['ingrediants']) {
+					for (const recipe of recipes) {
+						if (!recipe['ingrediants']) {
 							recipe['ingrediants'] = [];
 						}
 					}
@@ -34,8 +34,8 @@ export class ServerService {
 			)
 			.subscribe(
 				(recipes: Recipe[]) => {
-					return this.recipeService.setRecipes(recipes)
+					return this.recipeService.setRecipes(recipes);
 				}
-			)
+			);
 	}
 }

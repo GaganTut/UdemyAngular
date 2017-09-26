@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { Component, OnInit } from '@angular/core';
 import { ServerService } from '../../server/server.service';
 import * as app from '../../store/app.reducers';
-import * as auth from '../../store/reducers/auth.reducer';
+import * as auth from '../../store/auth/auth.reducer';
 
 import { AuthService } from '../../auth/auth.service';
 @Component({

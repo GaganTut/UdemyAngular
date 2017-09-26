@@ -1,6 +1,6 @@
 import { SET_TOKEN } from './../../constants/index';
 import { Ingrediant } from './../../shared/ingrediant.model';
-import * as AuthActions from '../actions/auth.actions';
+import * as AuthActions from './auth.actions';
 import * as types from '../../constants';
 
 export interface State {

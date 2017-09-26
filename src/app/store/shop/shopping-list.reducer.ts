@@ -1,7 +1,5 @@
-import { StartEdit } from './../actions/shopping-list.actions';
-import { UPDATE_INGREDIANT, DELETE_INGREDIANT, START_EDIT, STOP_EDIT } from './../../constants/index';
 import { Ingrediant } from './../../shared/ingrediant.model';
-import * as ShoppingListActions from '../actions/shopping-list.actions';
+import * as ShoppingListActions from './shopping-list.actions';
 import * as types from '../../constants';
 
 export interface State {

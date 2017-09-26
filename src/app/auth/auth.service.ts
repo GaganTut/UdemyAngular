@@ -3,14 +3,14 @@ import { Store } from '@ngrx/store';
 import * as firebase from 'firebase';
 import {Router} from '@angular/router';
 import {Injectable} from '@angular/core';
-import * as auth from '../store/actions/auth.actions';
+import * as auth from '../store/auth/auth.actions';
 
 @Injectable()
 export class AuthService {
 	token: string;
 	constructor(
 		private router: Router,
-		private store: Store<app.AppState>
+		private store: Store<AppState>
 	) {}
 
 	signupUser(email: string, password: string) {
