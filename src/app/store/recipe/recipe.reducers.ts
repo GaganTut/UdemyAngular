@@ -61,7 +61,7 @@ export function recipeReducer(state = initialState, action: RecipeActions) {
     case types.DELETE_RECIPE:
 			return {
 				...state,
-				recipes: [...state.recipes].splice(action.payload, 1)
+				recipes: state.recipes.filter((recipe, index) => index !== action.payload)
 			};
 
 		default:
