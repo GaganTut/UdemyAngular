@@ -1,10 +1,17 @@
-import { Router } from '@angular/router';
-import { TrySignUp, TrySignIn } from './auth.actions';
-import * as types from './../../constants/index';
-import { Injectable } from '@angular/core';
-import { Actions, Effect } from '@ngrx/effects';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/mergeMap';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/switchMap';
+
 import * as firebase from 'firebase';
-import { fromPromise } from 'rxjs/Observable/fromPromise';
+import * as types from './../../constants/index';
+
+import { Actions, Effect } from '@ngrx/effects';
+import { TrySignIn, TrySignUp } from './auth.actions';
+
+import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { fromPromise } from 'rxjs/observable/fromPromise';
 
 @Injectable()
 export class AuthEffects {

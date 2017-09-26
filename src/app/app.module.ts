@@ -1,22 +1,19 @@
-import { AuthEffects } from './store/auth/auth.effects';
-import { reducers } from './store/app.reducers';
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { HttpModule } from '@angular/http';
-import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
-import { StoreRouterConnectingModule } from '@ngrx/router-store';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { environment } from '../environments/environment';
-
-import {AppRoutingModule} from './app-routing.module';
-import { ShoppingListModule } from './shopping-list/shopping-list.module';
-import { AuthModule } from './auth/auth.module';
-import { SharedModule } from './shared/shared.module';
-import {CoreModule} from './core/core.module';
-
 import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
+import { AuthEffects } from './store/auth/auth.effects';
+import { AuthModule } from './auth/auth.module';
+import { BrowserModule } from '@angular/platform-browser';
+import { CoreModule } from './core/core.module';
+import { EffectsModule } from '@ngrx/effects';
+import { HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
+import { SharedModule } from './shared/shared.module';
+import { ShoppingListModule } from './shopping-list/shopping-list.module';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { StoreModule } from '@ngrx/store';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { environment } from '../environments/environment';
+import { reducers } from './store/app.reducers';
 
 @NgModule({
   declarations: [
@@ -25,7 +22,7 @@ import { AppComponent } from './app.component';
   imports: [
 		BrowserModule,
 		AppRoutingModule,
-		HttpModule,
+		HttpClientModule,
 		SharedModule,
 		ShoppingListModule,
 		AuthModule,
@@ -35,7 +32,6 @@ import { AppComponent } from './app.component';
 		StoreRouterConnectingModule,
 		!environment.production ? StoreDevtoolsModule.instrument() : []
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

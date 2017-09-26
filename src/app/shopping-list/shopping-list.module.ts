@@ -1,9 +1,8 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { SharedModule } from '../shared/shared.module';
-
-import { ShoppingListComponent } from './shopping-list.component';
 import { ShoppingEditComponent } from './shopping-edit/shopping-edit.component';
+import { ShoppingListComponent } from './shopping-list.component';
 
 @NgModule({
 	declarations: [
@@ -15,4 +14,4 @@ import { ShoppingEditComponent } from './shopping-edit/shopping-edit.component';
 		SharedModule
 	]
 })
-export class ShoppingListModule{}
+export class ShoppingListModule {}
