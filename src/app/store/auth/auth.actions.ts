@@ -6,6 +6,12 @@ export class SignUp implements Action {
 	readonly type = types.SIGN_UP;
 }
 
+export class TrySignUp implements Action {
+	readonly type = types.TRY_SIGN_UP;
+
+	constructor(public payload: {username: string, password: string}) {}
+}
+
 export class SignIn implements Action {
 	readonly type = types.SIGN_IN;
 }

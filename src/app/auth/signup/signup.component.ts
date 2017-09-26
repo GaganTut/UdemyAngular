@@ -1,3 +1,6 @@
+import { TrySignUp } from './../../store/auth/auth.actions';
+import { AppState } from './../../store/app.reducers';
+import { Store } from '@ngrx/store';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthService } from '../auth.service';
@@ -9,12 +12,13 @@ import { AuthService } from '../auth.service';
 })
 export class SignupComponent {
 
-	constructor(private authService: AuthService) { }
+	constructor(
+		private store: Store<AppState>
+	) { }
 
 	onSignup(form: NgForm) {
 		const email = form.value.email;
 		const password = form.value.password;
-		this.authService.signupUser(email, password);
+		this.store.dispatch(new TrySignUp({username: email, password}));
 	}
-
 }

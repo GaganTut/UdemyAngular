@@ -1,9 +1,11 @@
+import { AuthEffects } from './store/auth/auth.effects';
 import { reducers } from './store/app.reducers';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 
 import {AppRoutingModule} from './app-routing.module';
 import { ShoppingListModule } from './shopping-list/shopping-list.module';
@@ -25,7 +27,8 @@ import { AppComponent } from './app.component';
 		ShoppingListModule,
 		AuthModule,
 		CoreModule,
-		StoreModule.forRoot(reducers)
+		StoreModule.forRoot(reducers),
+		EffectsModule.forRoot([AuthEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]
