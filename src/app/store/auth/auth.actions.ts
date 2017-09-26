@@ -12,6 +12,12 @@ export class TrySignUp implements Action {
 	constructor(public payload: {username: string, password: string}) {}
 }
 
+export class TrySignIn implements Action {
+	readonly type = types.TRY_SIGN_IN;
+
+	constructor(public payload: {username: string, password: string}) {}
+}
+
 export class SignIn implements Action {
 	readonly type = types.SIGN_IN;
 }
@@ -30,4 +36,6 @@ export type AuthActions =
 	SignIn |
 	SignOut |
 	SignUp |
-	SetToken;
+	SetToken |
+	TrySignIn |
+	TrySignUp;

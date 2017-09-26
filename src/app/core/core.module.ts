@@ -8,7 +8,6 @@ import { AppRoutingModule } from '../app-routing.module';
 
 import { RecipeService } from '../recipes/recipe.service';
 import { ServerService } from '../server/server.service';
-import { AuthService } from '../auth/auth.service';
 
 @NgModule({
 	declarations: [
@@ -25,8 +24,7 @@ import { AuthService } from '../auth/auth.service';
 	],
 	providers: [
 		RecipeService,
-		ServerService,
-		AuthService
+		ServerService
 	]
 })
 export class CoreModule {}

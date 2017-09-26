@@ -3,7 +3,6 @@ import { AppState } from './../../store/app.reducers';
 import { Store } from '@ngrx/store';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-signup',

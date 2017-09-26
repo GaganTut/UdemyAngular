@@ -1,3 +1,4 @@
+import { SignOut } from './../../store/auth/auth.actions';
 import { Observable } from 'rxjs/observable';
 import { Store } from '@ngrx/store';
 import { Component, OnInit } from '@angular/core';
@@ -5,7 +6,6 @@ import { ServerService } from '../../server/server.service';
 import * as app from '../../store/app.reducers';
 import * as auth from '../../store/auth/auth.reducer';
 
-import { AuthService } from '../../auth/auth.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -16,7 +16,6 @@ export class HeaderComponent implements OnInit {
 
 	constructor(
 		private serverService: ServerService,
-		private authService: AuthService,
 		private store: Store<app.AppState>
 	) {}
 
@@ -37,6 +36,6 @@ export class HeaderComponent implements OnInit {
 	}
 
 	onLogout() {
-		this.authService.logout();
+		this.store.dispatch(new SignOut());
 	}
 }
