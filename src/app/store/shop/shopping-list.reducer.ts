@@ -1,6 +1,7 @@
-import { Ingrediant } from './../../shared/ingrediant.model';
 import * as ShoppingListActions from './shopping-list.actions';
 import * as types from '../../constants';
+
+import { Ingrediant } from './../../shared/ingrediant.model';
 
 export interface State {
 	ingrediants: Ingrediant[];
@@ -31,17 +32,13 @@ export function ShoppingListReducer(state = initialState, action: ShoppingListAc
 				ingrediants: [...state.ingrediants, ...action.payload]
 			};
 
-		case types.UPDATE_INGREDIANT:
-		return {
-			...state,
-			ingredients: state.ingrediants.map((ingredient, index) =>
-				index === state.editedIndex
-						? { ...ingredient, ...action.payload }
-						: ingredient,
-				),
-				editedIngrediant: null,
-				editedIndex: -1
-		 };
+    case types.UPDATE_INGREDIANT:
+      return {
+        ...state,
+        ingrediants: state.ingrediants.map((ingredient, index) => index === state.editedIndex ? action.payload : ingredient),
+        editedIngrediant: null,
+        editedIndex: -1
+      };
 
 		case types.DELETE_INGREDIANT:
 			return {
